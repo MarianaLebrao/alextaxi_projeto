@@ -2,8 +2,6 @@
 
 Website profissional para serviços de táxi executivo em São José do Rio Preto - SP.
 
-![Preview](https://images.unsplash.com/photo-1765227115930-999c94d1ed3b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjB0YXhpJTIwZHJpdmVyJTIweWVsbG93JTIwY2FifGVufDF8fHx8MTc3MDE0MzY1M3ww&ixlib=rb-4.1.0&q=80&w=1080)
-
 ## 🚀 Tecnologias
 
 Este projeto foi desenvolvido utilizando as seguintes tecnologias modernas:
@@ -68,4 +66,4 @@ npm run preview
 
 ---
 
-Desenvolvido com ❤️ para Alex Táxi Executivo.
+Desenvolvido para Alex Táxi Executivo.
