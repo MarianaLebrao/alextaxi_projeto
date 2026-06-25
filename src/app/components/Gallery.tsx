@@ -1,87 +1,165 @@
+import { useEffect, useState } from "react";
+import { MapPin } from "lucide-react";
+
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  type CarouselApi,
+} from "@/app/components/ui/carousel";
+
+import pocosDeCaldasImg from "@/assets/images/pocos-de-caldas.jpeg";
+import saoCarlosParadaImg from "@/assets/images/sao-carlos-parada.jpeg";
 
 const images = [
   {
-    url: "https://images.unsplash.com/photo-1518614768202-663a3a0ecf59?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx5ZWxsb3clMjB0YXhpJTIwY2FyfGVufDF8fHx8MTc3MDA2NzI1NHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    alt: "Táxi amarelo profissional"
+    url: "https://alextaxiriopretosp.web.app/assets/saocarlos-tdelozzf.jpeg",
+    alt: "Táxi em São Carlos",
+    location: "São Carlos",
   },
   {
-    url: "https://images.unsplash.com/photo-1759429025886-74fc0ea762e5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0YXhpJTIwZHJpdmVyJTIwcHJvZmVzc2lvbmFsfGVufDF8fHx8MTc3MDExNzU0Nnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    alt: "Motorista profissional"
+    url: "https://alextaxiriopretosp.web.app/assets/lins-Bso9zHx0.jpeg",
+    alt: "Táxi em Lins",
+    location: "Lins",
   },
   {
-    url: "https://images.unsplash.com/photo-1759421164564-65c4fe22d0b5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaXR5JTIwdGF4aSUyMHNlcnZpY2V8ZW58MXx8fHwxNzcwMTQzNzMzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    alt: "Serviço de táxi na cidade"
-  }
+    url: "https://alextaxiriopretosp.web.app/assets/ribeiraopretohotel-o34LpKQm.jpeg",
+    alt: "Táxi em Ribeirão Preto",
+    location: "Ribeirão Preto",
+  },
+  {
+    url: saoCarlosParadaImg,
+    alt: "Táxi em São Carlos",
+    location: "São Carlos",
+  },
+  {
+    url: pocosDeCaldasImg,
+    alt: "Táxi em Poços de Caldas",
+    location: "Poços de Caldas",
+  },
 ];
 
+const featuredImage = {
+  url: "https://alextaxiriopretosp.web.app/assets/caldasnovas-Bomrph_g.jpeg",
+  alt: "Táxi em Caldas Novas",
+  location: "Caldas Novas",
+};
+
 export function Gallery() {
+  const [api, setApi] = useState<CarouselApi>();
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (!api || isPaused) return;
+
+    const interval = window.setInterval(() => {
+      api.scrollNext();
+    }, 3500);
+
+    return () => window.clearInterval(interval);
+  }, [api, isPaused]);
+
   return (
-    <section id="galeria" className="py-16 md:py-24 bg-white">
+    <section id="galeria" className="bg-white py-16 md:py-24">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl mb-4">
-            Nosso Táxi
-          </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+        <div className="mb-12 text-center">
+          <h2 className="mb-4 text-3xl md:text-4xl">Nosso Táxi</h2>
+          <p className="mx-auto max-w-2xl text-lg text-gray-600">
             Veículos confortáveis, limpos e sempre bem cuidados para sua segurança e conforto
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {images.map((image, index) => (
-            <div
-              key={index}
-              className="relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-shadow group"
-            >
-              <div className="aspect-[4/3] overflow-hidden">
-                <ImageWithFallback
-                  src={image.url}
-                  alt={image.alt}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                />
-              </div>
-            </div>
-          ))}
-        </div>
+        <Carousel
+          setApi={setApi}
+          opts={{
+            align: "start",
+            loop: true,
+          }}
+          className="mx-auto w-full max-w-7xl px-10 md:px-14"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          <CarouselContent className="-ml-6">
+            {images.map((image, index) => (
+              <CarouselItem
+                key={`${image.location}-${index}`}
+                className="pl-6 sm:basis-1/2 lg:basis-1/3"
+              >
+                <div className="group relative overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl">
+                  <div className="relative aspect-[3/4] overflow-hidden">
+                    <ImageWithFallback
+                      src={image.url}
+                      alt={image.alt}
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
 
-        <div className="mt-12 bg-gray-900 text-white rounded-2xl p-8 md:p-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+
+                    <div className="absolute inset-x-0 bottom-0 p-6">
+                      <div className="flex items-center gap-2 text-yellow-500 drop-shadow-md">
+                        <MapPin className="size-5 fill-yellow-500 text-black" />
+                        <span className="text-sm font-bold uppercase tracking-wide">
+                          {image.location}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+
+          <CarouselPrevious className="left-0 border-yellow-400 bg-white/95 text-gray-900 hover:bg-yellow-400 disabled:opacity-40" />
+          <CarouselNext className="right-0 border-yellow-400 bg-white/95 text-gray-900 hover:bg-yellow-400 disabled:opacity-40" />
+        </Carousel>
+
+        <div className="mt-12 rounded-2xl bg-gray-900 p-8 text-white md:p-12">
+          <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2">
             <div>
-              <h3 className="text-2xl md:text-3xl mb-4">
-                Veículo Equipado
-              </h3>
+              <h3 className="mb-4 text-2xl md:text-3xl">Veículo Equipado</h3>
               <ul className="space-y-3">
                 <li className="flex items-center gap-3">
-                  <span className="size-2 bg-yellow-400 rounded-full"></span>
+                  <span className="size-2 rounded-full bg-yellow-400"></span>
                   <span>Ar condicionado</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <span className="size-2 bg-yellow-400 rounded-full"></span>
+                  <span className="size-2 rounded-full bg-yellow-400"></span>
                   <span>Som ambiente</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <span className="size-2 bg-yellow-400 rounded-full"></span>
+                  <span className="size-2 rounded-full bg-yellow-400"></span>
                   <span>Bancos confortáveis</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <span className="size-2 bg-yellow-400 rounded-full"></span>
+                  <span className="size-2 rounded-full bg-yellow-400"></span>
                   <span>Porta-malas espaçoso</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <span className="size-2 bg-yellow-400 rounded-full"></span>
+                  <span className="size-2 rounded-full bg-yellow-400"></span>
                   <span>Higienizado diariamente</span>
                 </li>
               </ul>
             </div>
-            <div className="bg-yellow-400 text-gray-900 rounded-xl p-6 text-center">
-              <p className="text-lg mb-4">Adicione suas próprias fotos aqui!</p>
-              <div className="aspect-video bg-gray-200 rounded-lg flex items-center justify-center">
-                <span className="text-4xl">📸</span>
+            <div className="rounded-xl bg-yellow-400 p-6 text-center text-gray-900">
+              <div className="group relative aspect-video overflow-hidden rounded-lg shadow-lg">
+                <img
+                  src={featuredImage.url}
+                  alt={featuredImage.alt}
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-6">
+                  <div className="flex items-center gap-2 text-yellow-500 drop-shadow-md">
+                    <MapPin className="size-5 fill-yellow-500 text-black" />
+                    <span className="text-sm font-bold uppercase tracking-wide">
+                      {featuredImage.location}
+                    </span>
+                  </div>
+                </div>
               </div>
-              <p className="text-sm mt-4 text-gray-700">
-                Substitua as imagens pelas fotos do seu táxi
-              </p>
             </div>
           </div>
         </div>
