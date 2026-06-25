@@ -1,4 +1,4 @@
-const aboutImageUrl = "https://alextaxiriopretosp.web.app/assets/aeroportoguarulhos-Ck3o7XJN.jpeg";
+import aboutImageUrl from "@/assets/images/aeroportoguarulhos.jpeg";
 
 export function About() {
   return (

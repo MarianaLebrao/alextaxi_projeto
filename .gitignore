@@ -123,3 +123,6 @@ dist
 Thumbs.db
 ehthumbs.db
 Desktop.ini 
+
+# Firebase local cache
+.firebase/

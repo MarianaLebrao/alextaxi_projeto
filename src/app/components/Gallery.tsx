@@ -11,22 +11,26 @@ import {
   type CarouselApi,
 } from "@/app/components/ui/carousel";
 
+import caldasNovasImg from "@/assets/images/caldasnovas.jpeg";
+import linsImg from "@/assets/images/lins.jpeg";
 import pocosDeCaldasImg from "@/assets/images/pocos-de-caldas.jpeg";
+import ribeiraoPretoHotelImg from "@/assets/images/ribeiraopretohotel.jpeg";
 import saoCarlosParadaImg from "@/assets/images/sao-carlos-parada.jpeg";
+import saoCarlosImg from "@/assets/images/saocarlos.jpeg";
 
 const images = [
   {
-    url: "https://alextaxiriopretosp.web.app/assets/saocarlos-tdelozzf.jpeg",
+    url: saoCarlosImg,
     alt: "Táxi em São Carlos",
     location: "São Carlos",
   },
   {
-    url: "https://alextaxiriopretosp.web.app/assets/lins-Bso9zHx0.jpeg",
+    url: linsImg,
     alt: "Táxi em Lins",
     location: "Lins",
   },
   {
-    url: "https://alextaxiriopretosp.web.app/assets/ribeiraopretohotel-o34LpKQm.jpeg",
+    url: ribeiraoPretoHotelImg,
     alt: "Táxi em Ribeirão Preto",
     location: "Ribeirão Preto",
   },
@@ -43,7 +47,7 @@ const images = [
 ];
 
 const featuredImage = {
-  url: "https://alextaxiriopretosp.web.app/assets/caldasnovas-Bomrph_g.jpeg",
+  url: caldasNovasImg,
   alt: "Táxi em Caldas Novas",
   location: "Caldas Novas",
 };
