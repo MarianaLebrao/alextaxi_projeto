@@ -1,28 +1,23 @@
 import { Phone, Mail, Instagram, MessageCircle } from "lucide-react";
 
 import { Button } from "@/app/components/ui/button";
+import { getWhatsAppUrl, publicContact } from "@/config/public-contact";
 
 export function Contact() {
-  const whatsappNumber = "5517992778979";
-  const whatsappMessage = "Olá! Gostaria de solicitar um táxi.";
-  const phoneNumber = "(17) 99277-8979";
-  const email = "alexmurauskas93@gmail.com";
-  const instagram = "@alex.taxiexecutivo.sjriopreto";
-
   const handleWhatsAppClick = () => {
-    window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`, "_blank");
+    window.open(getWhatsAppUrl(), "_blank");
   };
 
   const handlePhoneClick = () => {
-    window.open(`tel:${whatsappNumber}`, "_blank");
+    window.open(`tel:${publicContact.whatsappNumber}`, "_blank");
   };
 
   const handleEmailClick = () => {
-    window.open(`mailto:${email}`, "_blank");
+    window.open(`mailto:${publicContact.email}`, "_blank");
   };
 
   const handleInstagramClick = () => {
-    window.open(`https://instagram.com/${instagram.replace("@", "")}`, "_blank");
+    window.open(`https://instagram.com/${publicContact.instagram.replace("@", "")}`, "_blank");
   };
 
   return (
@@ -51,7 +46,7 @@ export function Contact() {
             className="border-white bg-white/10 px-6 py-6 text-lg text-white backdrop-blur-sm hover:bg-white/20"
           >
             <Phone className="mr-2 h-5 w-5" />
-            {phoneNumber}
+            {publicContact.phoneDisplay}
           </Button>
 
           <Button
@@ -60,7 +55,7 @@ export function Contact() {
             className="border-white bg-white/10 px-6 py-6 text-lg text-white backdrop-blur-sm hover:bg-white/20"
           >
             <Mail className="mr-2 h-5 w-5" />
-            {email}
+            {publicContact.email}
           </Button>
         </div>
 

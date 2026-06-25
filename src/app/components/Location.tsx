@@ -1,6 +1,7 @@
 import { MapPin, Navigation, Clock } from "lucide-react";
 
 import { Button } from "@/app/components/ui/button";
+import { publicContact } from "@/config/public-contact";
 
 export function Location() {
   const address = "R. Delegado Pinto de Tolêdo, 3005 - Parque Industrial, São José do Rio Preto - SP";
@@ -97,7 +98,7 @@ export function Location() {
             <div className="rounded-lg bg-gray-900 p-6 text-center text-white lg:col-span-2">
               <p className="mb-4 text-lg">Ou solicite que vamos até você!</p>
               <Button
-                onClick={() => window.open("https://wa.me/5517992778979", "_blank")}
+                onClick={() => window.open(`https://wa.me/${publicContact.whatsappNumber}`, "_blank")}
                 className="w-full bg-green-600 text-white hover:bg-green-700"
               >
                 Chamar pelo WhatsApp

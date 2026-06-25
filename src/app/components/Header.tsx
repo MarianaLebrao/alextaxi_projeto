@@ -1,13 +1,11 @@
 import { Car, Phone } from "lucide-react";
 
 import { Button } from "@/app/components/ui/button";
+import { getWhatsAppUrl } from "@/config/public-contact";
 
 export function Header() {
-  const whatsappNumber = "5517992778979";
-  const whatsappMessage = "Olá! Gostaria de solicitar um táxi.";
-
   const handleWhatsAppClick = () => {
-    window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`, "_blank");
+    window.open(getWhatsAppUrl(), "_blank");
   };
 
   return (
