@@ -15,8 +15,10 @@ import caldasNovasImg from "@/assets/images/caldasnovas.jpeg";
 import linsImg from "@/assets/images/lins.jpeg";
 import pocosDeCaldasImg from "@/assets/images/pocos-de-caldas.jpeg";
 import ribeiraoPretoHotelImg from "@/assets/images/ribeiraopretohotel.jpeg";
+import rodoviaEngenheiroRonanRochaImg from "@/assets/images/rodovia-engenheiro-ronan-rocha.jpeg";
 import saoCarlosParadaImg from "@/assets/images/sao-carlos-parada.jpeg";
 import saoCarlosImg from "@/assets/images/saocarlos.jpeg";
+import varginhaImg from "@/assets/images/varginha.jpeg";
 
 const images = [
   {
@@ -43,6 +45,16 @@ const images = [
     url: pocosDeCaldasImg,
     alt: "Táxi em Poços de Caldas",
     location: "Poços de Caldas",
+  },
+  {
+    url: rodoviaEngenheiroRonanRochaImg,
+    alt: "Táxi na Rodovia Engenheiro Ronan Rocha",
+    location: "Rodovia Engenheiro Ronan Rocha",
+  },
+  {
+    url: varginhaImg,
+    alt: "Táxi em Varginha",
+    location: "Varginha",
   },
 ];
 
